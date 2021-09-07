@@ -3,3 +3,12 @@
 ################################################################################
 
 /WebCache/obj
+/WebCache/bin/Debug/net5.0
+/Web.MQ/obj
+/Web.MQ/bin/Debug/net5.0
+/Web.Framework/obj
+/Web.Framework/bin/Debug/net5.0
+/Web.AutoFac/obj
+/Web.AutoFac/bin/Debug/net5.0
+/Web/obj
+/Web/bin/Debug/net5.0
