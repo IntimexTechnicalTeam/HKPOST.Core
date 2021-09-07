@@ -12,3 +12,17 @@
 /Web.AutoFac/bin/Debug/net5.0
 /Web/obj
 /Web/bin/Debug/net5.0
+/WS.Model/obj
+/WS.Model/bin/Debug/net5.0
+/WS.Domain/bin/Debug/net5.0
+/WS.Domain/obj
+/WS.BLL/obj
+/WS.BLL/bin/Debug/net5.0
+/Mall.DAL/obj
+/Mall.DAL/bin/Debug/net5.0
+/HandlerUpdateQtyService/obj
+/HandlerUpdateQtyService/bin/Debug/net5.0
+/HandlerJobService/obj
+/HandlerJobService/bin/Debug/net5.0
+/HandlePreHotService/obj
+/HandlePreHotService/bin/Debug/net5.0

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Xml.Serialization;
 
 namespace Web.Framework
 {
@@ -331,6 +333,37 @@ namespace Web.Framework
 
             return !t.IsValueType || (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>));
 
+        }
+
+        /// <summary>
+        /// 实体对象转字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToJson<T>(T obj, string format = "yyyy'-'MM'-'dd' 'HH':'mm':'ss")
+        {
+            IsoDateTimeConverter timeConverter = new IsoDateTimeConverter();
+            //这里使用自定义日期格式，如果不使用的话，默认是ISO8601格式
+            timeConverter.DateTimeFormat = format;
+            return JsonConvert.SerializeObject(obj, timeConverter);
+        }
+
+        public static T ToObject<T>(string strJson) where T : class
+        {
+            if (!string.IsNullOrWhiteSpace(strJson))
+                return JsonConvert.DeserializeObject<T>(strJson);
+            return null;
+        }
+
+        public static T DeserializeToObject<T>(string xml)
+        {
+            T myObject;
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            StringReader reader = new StringReader(xml);
+            myObject = (T)serializer.Deserialize(reader);
+            reader.Close();
+            return myObject;
         }
     }
 }

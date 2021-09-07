@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mall.DAL\WS.DAL.csproj" />
+    <ProjectReference Include="..\Web.Framework\Web.Framework.csproj" />
+    <ProjectReference Include="..\Web.MQ\Web.MQ.csproj" />
+    <ProjectReference Include="..\WebCache\WebCache.csproj" />
+    <ProjectReference Include="..\WS.Domain\WS.Domain.csproj" />
+    <ProjectReference Include="..\WS.Model\WS.Model.csproj" />
+  </ItemGroup>
+
+</Project>

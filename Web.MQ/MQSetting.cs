@@ -8,9 +8,15 @@ namespace Web.MQ
 {
     public static class MQSetting
     {
-        public const string ViewBDPageQueue = "View.BDPage.Queue";
+        /// <summary>
+        /// 更新库存队列
+        /// </summary>
+        public const string UpdateQtyQueue = "Update.Qty.Queue";
 
-        public const string ViewBDPageExchange = "View.BDPage.Exchange";
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string UpdateQtyExchange = "Update.Qty.Exchange";
 
     }
 }
