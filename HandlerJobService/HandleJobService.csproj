@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Web.AutoFac\Web.AutoFac.csproj" />
+    <ProjectReference Include="..\Web.Framework\Web.Framework.csproj" />
+    <ProjectReference Include="..\Web.MQ\Web.MQ.csproj" />
+    <ProjectReference Include="..\Web.Quartz\Web.Quartz.csproj" />
+    <ProjectReference Include="..\WebCache\WebCache.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Config\appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
