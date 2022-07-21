@@ -23,9 +23,9 @@ namespace WebCache
         /// <param name="services"></param>s
         /// <param name="t"></param>
         /// <returns></returns>
-        public static IServiceCollection AddCacheServices(this IServiceCollection services)
+        public static IServiceCollection AddCacheServices(this IServiceCollection services, IConfiguration config)
         {
-            string conn = Globals.Configuration["Redis:conn"];
+            string conn = config["Redis:conn"];
             var csredis = new CSRedisClient(conn);
             RedisHelper.Initialization(csredis);
             services.AddSingleton(csredis);           

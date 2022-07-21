@@ -1,12 +1,9 @@
-﻿using HandleTestJobService;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Web.Framework;
+using WS.BLL;
 
 namespace HandleJobService
 {
@@ -25,17 +22,10 @@ namespace HandleJobService
         {
             var result = new SystemResult();
 
-            /////do something here    
-            //IServiceScope scope = this.services.CreateScope();
-            //using (scope)
-            //{
-            //    ITestService testService = scope.ServiceProvider.GetService<ITestService>();
-
-            //    result = await testService.Hello("q2134");
-            //}
- 
             using var scope = this.services.CreateScope();
-        
+            var service = scope.ServiceProvider.GetService<IDealProductQtyBll>();
+            result = await service.HandleQtyAsync();
+
             return result;
         }
     }

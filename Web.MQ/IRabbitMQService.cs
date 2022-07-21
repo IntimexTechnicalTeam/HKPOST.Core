@@ -7,7 +7,7 @@ using Web.Framework;
 
 namespace Web.MQ
 {
-    public interface IRabbitMQService: IDependency
+    public interface IRabbitMQService //: IDependency
     {
         /// <summary>
         /// 发布消息

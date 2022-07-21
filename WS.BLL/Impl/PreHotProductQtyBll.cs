@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Web.Framework;
 using WS.BLL.Interface;
+using WS.DAL.Interface;
 using WS.Domain.Enums;
 using WS.Domain.PreHeat;
 using WS.Model;
@@ -16,11 +17,13 @@ namespace WS.BLL.Impl
     {
         IServiceProvider _service;
 
+        public IDealProductQtyRepository dealProductQtyRepository;
+
         public PreHotProductQtyBll(IServiceProvider services) : base(services)
         {
-            this._service = services;           
+            this._service = services;
+            dealProductQtyRepository = _service.GetService(typeof(IDealProductQtyRepository)) as IDealProductQtyRepository;
         }
-
 
         public async Task<SystemResult> CreatePreHeat()
         {
@@ -71,12 +74,19 @@ namespace WS.BLL.Impl
             await UpdateCache(InvtHoldQtyLst, InvtHoldQtyKey, "InvtHoldQty");
             await UpdateCache(SaleQtyLst, SalesQtyKey, "SaleQty");
 
+            SaveLog("准备回写ProductQty数据", true);
+            await UpdateProductQty(lst);
+            result.Succeeded = true;
+            SaveLog("已经回写ProductQty数据", true);
+
             return result;
         }
 
         private async Task<SystemResult> UpdateCache(IEnumerable<PreProductQty> Lst, string cacheKey, string fieldName)
         {
             var result = new SystemResult();
+
+            await RedisHelper.DelAsync(cacheKey);
             foreach (var item in Lst)
             {
                 this.Logger.LogInformation($"开始处理Sku={item.SkuId}的{fieldName}");
@@ -88,6 +98,25 @@ namespace WS.BLL.Impl
             }
 
             return result;
+        }
+
+        private async Task<SystemResult> UpdateProductQty(IEnumerable<PreProductQty> Lst)
+        {
+            var result = new SystemResult();
+
+            var flag = await dealProductQtyRepository.UpdateProductyQty(Lst);
+
+            result.Succeeded = flag > 0 ? true : false;
+            return result;
+        }
+
+        private void SaveLog(string msg, bool flag)
+        {
+            if (flag)
+                Logger.LogInformation(msg);
+            else
+                Logger.LogError(msg);
+            Console.WriteLine(msg);
         }
     }
 }

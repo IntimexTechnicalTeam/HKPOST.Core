@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Web.Framework;
 
-namespace HandleTestJobService
+namespace HandleJobService
 {
     public abstract class BaseJob :IJob 
     {

@@ -9,12 +9,21 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace WS.DAL.Impl
 {
     public class EFBaseRepository : BaseRepository
     {
-        public IUnitOfWork UnitWork { get; set; } = new UnitOfWork();    //暂时new
+        public IUnitOfWork UnitWork { get; set; }
+
+        public IServiceProvider Services { get; set; }
+
+        public EFBaseRepository(IServiceProvider service)
+        {
+            this.Services = service;
+            UnitWork = Services.GetService(typeof(IUnitOfWork)) as IUnitOfWork;
+        }
 
         #region 同步
 
@@ -196,14 +205,13 @@ namespace WS.DAL.Impl
 
         public override async Task InsertAsync<T>(T t)
         {
-            UnitWork.DataContext.Set<T>().Add(t);
+            await UnitWork.DataContext.Set<T>().AddAsync(t);
             await SubmitChangesAsync();
         }
 
         public override async Task InsertAsync<T>(List<T> list)
         {
-
-            UnitWork.DataContext.Set<T>().AddRange(list);
+            await UnitWork.DataContext.Set<T>().AddRangeAsync(list);
             await SubmitChangesAsync();
         }
 
@@ -358,26 +366,38 @@ namespace WS.DAL.Impl
             return flag;
         }
 
-        public override IQueryable<T> GetList<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task<IQueryable<T>> GetListAsync<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
-        public override async Task<int> ExecuteSqlCommandAsync(string sql, params object[] param)
+        public override IQueryable<T> GetList<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
+        {
+            var result =  UnitWork.DataContext.Set<T>().FromSqlRaw(sql, parameters);
+            return result;
+        }
+
+        public override async Task<IQueryable<T>> GetListAsync<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
+        {
+            var result = await UnitWork.DataContext.Set<T>().FromSqlRaw(sql, parameters).ToArrayAsync();
+            return result.AsQueryable();
+        }
+
+        public override async Task<int> ExecuteSqlCommandAsync(string sql, IEnumerable<object> param)
+        {           
+           return await UnitWork.DataContext.Database.ExecuteSqlRawAsync(sql, param);
+        }
+
+        public override async Task<int> ExecuteSqlRawAsync(string sql, params object[] param)
         {
             return await UnitWork.DataContext.Database.ExecuteSqlRawAsync(sql, param);
         }
 
-        public override int ExecuteSqlCommand(string sql, params object[] param)
+        public override int ExecuteSqlCommand(string sql, IEnumerable<object> param)
         {
             return UnitWork.DataContext.Database.ExecuteSqlRaw(sql, param);
+        }
+
+        public override IDbContextTransaction CreateTransation()
+        {
+            return UnitWork.DataContext.Database.BeginTransaction();
         }
     }
 }

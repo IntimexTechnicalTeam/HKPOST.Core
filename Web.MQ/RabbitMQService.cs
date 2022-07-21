@@ -21,10 +21,10 @@ namespace Web.MQ
         ILog _logger = LogManager.GetLogger("system");
 
         IConnectionChannelPool _channelPool;
-        public RabbitMQService()
+        public RabbitMQService(IConnectionChannelPool channelPool)
         {
-            var obj = Activator.CreateInstance(typeof(ConnectionChannelPool));
-            this._channelPool = (IConnectionChannelPool)obj;
+            //var obj = Activator.CreateInstance(typeof(ConnectionChannelPool));
+            this._channelPool = channelPool;
         }
 
         public void PublishMsg<T>(string queueName, string exchangeName, T t, bool throwIfErrorCaused = true)

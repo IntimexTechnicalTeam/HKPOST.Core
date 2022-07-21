@@ -4,50 +4,75 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
+
 
 namespace WS.DAL.Impl
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork()
+        public IServiceProvider Services { get; set; }
+
+        public  MallDbContext DataContext { get;set;}
+
+        public UnitOfWork(IServiceProvider service)
         {
-            Id = Guid.NewGuid();
+            //Id = Guid.NewGuid();
+            this.Services = service;
+            DataContext = this.Services.GetService(typeof(MallDbContext)) as MallDbContext;
         }
-        public Guid Id { get; set; }
+
         public bool IsUnitSubmit { get; set; }
 
-        private MallDbContext _mallDbContext;
-        private string _connectionString;
-        /// <summary>
-        /// 获取或设置 当前使用的数据访问上下文对象
-        /// </summary>
-        public MallDbContext DataContext
-        {
-            get
-            {
-                _mallDbContext = MallContextFactory.GetCurrentDbContext();
-                return _mallDbContext;
-            }
-        }
+        //public Guid Id { get; set; }
 
-        public MallDbContext GetNewDataContext()
-        {
+        //private MallDbContext _mallDbContext;
+        //private string _connectionString;
+        ///// <summary>
+        ///// 获取或设置 当前使用的数据访问上下文对象
+        ///// </summary>
+        //public MallDbContext DataContext
+        //{
+        //    get
+        //    {
+        //        if (_mallDbContext == null)
+        //        {
+        //            if (_connectionString == null)
+        //            {
+        //                _mallDbContext = MallContextFactory.GetCurrentDbContext();
+        //            }
+        //            else
+        //            {
+        //                _mallDbContext = MallContextFactory.GetCurrentDbContext(_connectionString);
 
-            if (_connectionString == null)
-            {
-                _mallDbContext = new MallDbContext();
-            }
-          
-            return _mallDbContext;
-        }
+        //            }
+        //        }
+        //        return _mallDbContext;
+        //    }
+        //}
 
-    
-        public MallDbContext SetConnectionString(string connectionString)
-        {
-            _connectionString = connectionString;
-            return _mallDbContext;
-        }
+        //public MallDbContext GetNewDataContext()
+        //{
+
+        //    if (_connectionString == null)
+        //    {
+        //        _mallDbContext = new MallDbContext();
+        //    }
+        //    else
+        //    {
+        //        _mallDbContext = new MallDbContext(_connectionString);
+
+        //    }
+
+        //    return _mallDbContext;
+        //}
+
+
+
+        //public MallDbContext SetConnectionString(string connectionString)
+        //{
+        //    _connectionString = connectionString;
+        //    return _mallDbContext;
+        //}
 
         public int Submit()
         {
@@ -77,8 +102,6 @@ namespace WS.DAL.Impl
             try
             {
 
-
-
                 int i = await DataContext.SaveChangesAsync();
                 IsUnitSubmit = false;
                 return i;
@@ -94,11 +117,6 @@ namespace WS.DAL.Impl
                 }
                 throw;
             }
-        }
-
-        public IDbContextTransaction CreateTransation()
-        {
-            return this.DataContext.Database.BeginTransaction();
         }
     }
 }

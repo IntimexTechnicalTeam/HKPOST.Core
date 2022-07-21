@@ -16,7 +16,9 @@
     <ProjectReference Include="..\Web.Framework\Web.Framework.csproj" />
     <ProjectReference Include="..\Web.MQ\Web.MQ.csproj" />
     <ProjectReference Include="..\Web.Quartz\Web.Quartz.csproj" />
+    <ProjectReference Include="..\Web.RegisterConfig\Web.RegisterConfig.csproj" />
     <ProjectReference Include="..\WebCache\WebCache.csproj" />
+    <ProjectReference Include="..\WS.BLL\WS.BLL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

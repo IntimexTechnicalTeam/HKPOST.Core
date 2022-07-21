@@ -10,5 +10,11 @@ namespace WS.BLL
     public interface IDealProductQtyBll : IDependency
     {
         Task<SystemResult> DealProductQty(Guid Id);
+
+        /// <summary>
+        /// 补偿回写Qty
+        /// </summary>
+        /// <returns></returns>
+        Task<SystemResult> HandleQtyAsync();
     }
 }

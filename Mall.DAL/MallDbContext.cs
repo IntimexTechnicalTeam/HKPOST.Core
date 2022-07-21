@@ -8,21 +8,23 @@ namespace WS.DAL
     public class MallDbContext : DbContext
     {
        
-        public MallDbContext() 
+        public MallDbContext()
         {
-           
+
+        }
+
+        public MallDbContext(DbContextOptions<MallDbContext> options) : base(options)
+        {
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseLoggerFactory(new CustomEFLoggerFactory());
-            
-            optionsBuilder.UseSqlServer(Globals.Configuration["ConnectionStrings:sqlcon"]);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+
 
         }
 
@@ -34,5 +36,11 @@ namespace WS.DAL
         public virtual DbSet<InventoryReserved> InventoryReserveds { get; set; }
 
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        public virtual DbSet<NonMbrShoppingCartItem> NonMbrShoppingCartItems { get; set; }
+
+        public virtual DbSet<PushMessage> PushMessages { get; set; }
+
+        public virtual DbSet<ProductQty> ProductQties { get; set; }
     }
 }

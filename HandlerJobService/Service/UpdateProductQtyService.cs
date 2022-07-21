@@ -3,7 +3,7 @@ using System;
 using Web.Framework;
 using Web.Quartz;
 
-namespace HandleJobService.Service
+namespace HandleJobService
 {
     public class UpdateProductQtyService : CronJobHostServiceBase<UpdateProductQtyJob>, IBackDoor
     {

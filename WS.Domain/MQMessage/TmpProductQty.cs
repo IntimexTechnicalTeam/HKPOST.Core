@@ -3,39 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WS.Domain.Enums;
 
 namespace WS.Model.MQMessage
 {
     public class TmpProductQty
     {
         /// <summary>
-        /// PushMessage.Id
+        /// OrderId,ShoppingCartId
         /// </summary>
         public Guid Id { get; set; }
 
         public Guid SkuId { get; set; }
 
-        public int InvtActualQty { get; set; }
+        public int Qty { get; set; }
 
-        public int SalesQty { get; set; }
+        public MQType MsgType { get; set; }
 
-        public int InvtReservedQty { get; set; }
-
-        public int InvtHoldQty { get; set; }
-
-        public QtyType QtyType { get; set; }
-
+        /// <summary>
+        /// 一般为PushMessage.Id
+        /// </summary>
+        public Guid MsgId { get; set; }= Guid.Empty;
     }
 
-    public enum QtyType {
 
-        WhenPurchasing,
-        WhenAddToCart,
-        WhenDeleteCart,
-        WhenModifyCart,
-        WhenPay,
-        WhenOrderComplate,
-        WhenOrderCancel
-    }
 
 }

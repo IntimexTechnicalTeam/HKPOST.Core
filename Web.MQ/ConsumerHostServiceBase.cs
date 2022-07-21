@@ -231,7 +231,7 @@ namespace Web.MQ
         public void SaveLog(string msg, bool flag=true)
         {
             if (flag)
-                Logger.LogTrace(msg);
+                Logger.LogInformation(msg);
             else
                 Logger.LogError(msg);
             Console.WriteLine(msg);

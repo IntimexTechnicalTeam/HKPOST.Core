@@ -53,7 +53,7 @@ namespace WS.BLL
             }
         }
 
-        public IRabbitMQService  rabbitMQService
+        public IRabbitMQService rabbitMQService
         {
             get
             {
@@ -86,6 +86,11 @@ namespace WS.BLL
             string error = "\r\n 异常类型：" + ex.GetType().FullName + "\r\n 异常源：" + ex.Source + "\r\n 异常位置=" + ex.TargetSite + " \r\n 异常信息=" + ex.Message + " \r\n 异常堆栈：" + ex.StackTrace;
 
             this.Logger.LogError(error);
+        }
+
+        protected virtual void LogInfo(string msg)
+        {
+            this.Logger.LogTrace(msg);
         }
     }
 }

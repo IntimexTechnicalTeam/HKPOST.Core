@@ -8,7 +8,9 @@ namespace Web.MQ
 {
     public static class MQSetting
     {
-        /// <summary>
+        
+		
+		 /// <summary>
         /// 更新库存队列
         /// </summary>
         public const string UpdateQtyQueue = "Update.Qty.Queue";

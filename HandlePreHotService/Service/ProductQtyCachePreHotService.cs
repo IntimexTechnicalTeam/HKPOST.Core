@@ -14,18 +14,18 @@ using WS.BLL.Interface;
 namespace HandlePreHotService.Service
 {
     //缓存预热服务
-    public class CachePreHotService : BackgroundService, IBackDoor
+    public class ProductQtyCachePreHotService : BackgroundService, IBackDoor
     {
         public IServiceProvider Services { get; set; }
         public ILogger Logger { get; set; }
 
         private IComponentContext _componentContext;
 
-        public CachePreHotService(IServiceProvider services, IComponentContext componentContext)
+        public ProductQtyCachePreHotService(IServiceProvider services, IComponentContext componentContext)
         {
             this.Services = services;
             this._componentContext = componentContext;
-            this.Logger = services.GetService<ILoggerFactory>().CreateLogger(typeof(CachePreHotService).Name);
+            this.Logger = services.GetService<ILoggerFactory>().CreateLogger(typeof(ProductQtyCachePreHotService).Name);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

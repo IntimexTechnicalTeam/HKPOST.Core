@@ -32,6 +32,7 @@ namespace HandleMqService
             using var scope = base.Services.CreateScope();
             var service = scope.ServiceProvider.GetService<IDealProductQtyBll>();
             var result = await service.DealProductQty(Guid.Parse(msg));
+            result.Message = result.Message ?? msg;
             SaveLog(result.Message, result.Succeeded);
         }
 

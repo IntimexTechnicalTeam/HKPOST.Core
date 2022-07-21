@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +21,15 @@ namespace WS.Model
         ///<summary>
         ///队列名称
         ///</summary>
+        [MaxLength(100)]
+        [Column(TypeName = "nvarchar")]
         public string QueueName { get; set; }
 
         ///<summary>
         ///路由名称
         ///</summary>
+        [MaxLength(100)]
+        [Column(TypeName = "nvarchar")]
         public string ExchangeName { get; set; }
 
         ///<summary>
@@ -43,6 +49,9 @@ namespace WS.Model
         ///</summary>
         public int Retries { get; set; } = 0;
 
+        [MaxLength(100)]
+        [Column(TypeName = "nvarchar")]
         public string Remark { get; set; }
     }
 }
+

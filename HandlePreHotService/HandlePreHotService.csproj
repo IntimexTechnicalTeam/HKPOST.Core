@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Web.AutoFac\Web.AutoFac.csproj" />
     <ProjectReference Include="..\Web.Framework\Web.Framework.csproj" />
+    <ProjectReference Include="..\Web.RegisterConfig\Web.RegisterConfig.csproj" />
     <ProjectReference Include="..\WebCache\WebCache.csproj" />
     <ProjectReference Include="..\WS.BLL\WS.BLL.csproj" />
   </ItemGroup>

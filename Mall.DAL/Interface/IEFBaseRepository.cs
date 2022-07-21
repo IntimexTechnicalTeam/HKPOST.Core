@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using Web.Framework;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace WS.DAL.Interface
 {
@@ -121,9 +122,13 @@ namespace WS.DAL.Interface
 
         #endregion
 
-        public abstract Task<int> ExecuteSqlCommandAsync(string sql, params object[] param);
+        public abstract Task<int> ExecuteSqlCommandAsync(string sql, IEnumerable<object> param);
 
-        public abstract int ExecuteSqlCommand(string sql, params object[] param);
+        public abstract Task<int> ExecuteSqlRawAsync(string sql, params object[] param);
+
+        public abstract int ExecuteSqlCommand(string sql, IEnumerable<object> param);
+
+        public abstract IDbContextTransaction CreateTransation();
     }
 
     public interface IBaseRepository : IDependency
@@ -314,9 +319,12 @@ namespace WS.DAL.Interface
 
         #endregion
 
-        Task<int> ExecuteSqlCommandAsync(string sql, params object[] param);
+        Task<int> ExecuteSqlCommandAsync(string sql, IEnumerable<object> param);
 
-        int ExecuteSqlCommand(string sql, params object[] param);
+        Task<int> ExecuteSqlRawAsync(string sql, params object[] param);
+
+        int ExecuteSqlCommand(string sql, IEnumerable<object> param);
+
+        IDbContextTransaction CreateTransation();
     }
-
 }

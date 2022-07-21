@@ -16,9 +16,9 @@ namespace WS.DAL.Interface
         
         MallDbContext DataContext { get; }
 
-        MallDbContext GetNewDataContext();
+        //MallDbContext GetNewDataContext();
 
-        MallDbContext SetConnectionString(string connectionString);
+        //MallDbContext SetConnectionString(string connectionString);
 
         /// <summary>
         /// 将操作提交到数据库，
@@ -34,8 +34,5 @@ namespace WS.DAL.Interface
         bool IsUnitSubmit { get; set; }
 
         Task<int> SubmitAsync();
-
-        IDbContextTransaction CreateTransation();
-
     }
 }

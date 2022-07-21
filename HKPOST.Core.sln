@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{AC9FF1A0-AA22-48D5-B2CC-DF7CCC8DDBF1}"
 EndProject
@@ -17,21 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorService", "MonitorSe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{43DDD275-5B60-4B6B-8A5A-65EBB25FE370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleUpdateQtyService", "HandlerUpdateQtyService\HandleUpdateQtyService.csproj", "{90F10718-A02C-4FF3-BFC2-F94B0DF900FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandleUpdateQtyService", "HandlerUpdateQtyService\HandleUpdateQtyService.csproj", "{90F10718-A02C-4FF3-BFC2-F94B0DF900FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleJobService", "HandlerJobService\HandleJobService.csproj", "{62049F1D-AD46-4D65-80E1-FFBEB670572C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandleJobService", "HandlerJobService\HandleJobService.csproj", "{62049F1D-AD46-4D65-80E1-FFBEB670572C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandlePreHotService", "HandlePreHotService\HandlePreHotService.csproj", "{F742ED61-0A16-4737-9545-1F0F781E3E7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandlePreHotService", "HandlePreHotService\HandlePreHotService.csproj", "{F742ED61-0A16-4737-9545-1F0F781E3E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS.BLL", "WS.BLL\WS.BLL.csproj", "{BED99F10-3AF7-45B3-9A02-2F0A3E1289CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.BLL", "WS.BLL\WS.BLL.csproj", "{BED99F10-3AF7-45B3-9A02-2F0A3E1289CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS.DAL", "Mall.DAL\WS.DAL.csproj", "{003BCE58-2B99-4F09-8439-E9E8E59946A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.DAL", "Mall.DAL\WS.DAL.csproj", "{003BCE58-2B99-4F09-8439-E9E8E59946A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS.Model", "WS.Model\WS.Model.csproj", "{6837ABA3-3C59-42FF-B99A-92E5A5105D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.Model", "WS.Model\WS.Model.csproj", "{6837ABA3-3C59-42FF-B99A-92E5A5105D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS.Domain", "WS.Domain\WS.Domain.csproj", "{3DB10C4C-F945-4C9A-A87E-55EA0AE86578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.Domain", "WS.Domain\WS.Domain.csproj", "{3DB10C4C-F945-4C9A-A87E-55EA0AE86578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Quartz", "Web.Quartz\Web.Quartz.csproj", "{A2A60081-33CD-4971-B167-5342B67F7256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Quartz", "Web.Quartz\Web.Quartz.csproj", "{A2A60081-33CD-4971-B167-5342B67F7256}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.RegisterConfig", "Web.RegisterConfig\Web.RegisterConfig.csproj", "{A42E7219-F231-41D8-9569-54CFA5648A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{A2A60081-33CD-4971-B167-5342B67F7256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2A60081-33CD-4971-B167-5342B67F7256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2A60081-33CD-4971-B167-5342B67F7256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42E7219-F231-41D8-9569-54CFA5648A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42E7219-F231-41D8-9569-54CFA5648A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42E7219-F231-41D8-9569-54CFA5648A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42E7219-F231-41D8-9569-54CFA5648A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{6837ABA3-3C59-42FF-B99A-92E5A5105D26} = {43DDD275-5B60-4B6B-8A5A-65EBB25FE370}
 		{3DB10C4C-F945-4C9A-A87E-55EA0AE86578} = {43DDD275-5B60-4B6B-8A5A-65EBB25FE370}
 		{A2A60081-33CD-4971-B167-5342B67F7256} = {43DDD275-5B60-4B6B-8A5A-65EBB25FE370}
+		{A42E7219-F231-41D8-9569-54CFA5648A8B} = {43DDD275-5B60-4B6B-8A5A-65EBB25FE370}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39048584-5938-40B3-BA60-055F6862AEEB}

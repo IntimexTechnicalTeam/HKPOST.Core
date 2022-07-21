@@ -28,3 +28,5 @@
 /HandlePreHotService/bin/Debug/net5.0
 /Web.Quartz/bin/Debug/net5.0
 /Web.Quartz/obj
+/Web.RegisterConfig/obj
+/Web.RegisterConfig/bin/Debug/net5.0

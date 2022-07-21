@@ -8,8 +8,29 @@ namespace WS.Domain.Enums
 {
     public enum MQType
     {
-        None =0,
-        UpdateInvt=1,
+        None = 0,
+        WhenPurchasing,
+        /// <summary>
+        /// 采购退回
+        /// </summary>
+        WhenPurchasingReturn,
+        /// <summary>
+        /// 销售退回，發貨退回
+        /// </summary>
+        WhenReturn,
+        WhenAddToCart,
+        WhenDeleteCart,
+        WhenModifyCart,
+        WhenPay,
+        WhenDeliveryArranged,
+        /// <summary>
+        /// 支付后取消
+        /// </summary>
+        WhenOrderCancel,
+        /// <summary>
+        /// 支付前超时或取消，回滚Hold货数量
+        /// </summary>
+        WhenPayTimeOut,
     }
 
     public enum MQState
@@ -17,14 +38,14 @@ namespace WS.Domain.Enums
         /// <summary>
         /// 未处理
         /// </summary>
-        UnDeal,
+        UnDeal = 1,
         /// <summary>
         /// 已处理
         /// </summary>
-        Deal,
+        Deal = 2,
         /// <summary>
         /// 异常
         /// </summary>
-        Exception
+        Exception = 3
     }
 }
