@@ -368,13 +368,13 @@ namespace WS.DAL.Impl
 
         #endregion
 
-        public override IQueryable<T> GetList<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
+        public override IQueryable<T> GetList<T>(string sql, List<SqlParameter> parameters)
         {
             var result =  UnitWork.DataContext.Set<T>().FromSqlRaw(sql, parameters);
             return result;
         }
 
-        public override async Task<IQueryable<T>> GetListAsync<T>(string sql, List<System.Data.SqlClient.SqlParameter> parameters)
+        public override async Task<IQueryable<T>> GetListAsync<T>(string sql, List<SqlParameter> parameters)
         {
             var result = await UnitWork.DataContext.Set<T>().FromSqlRaw(sql, parameters).ToArrayAsync();
             return result.AsQueryable();

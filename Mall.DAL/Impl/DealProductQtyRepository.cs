@@ -1,10 +1,10 @@
-﻿using WS.DAL.Interface;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WS.DAL.Interface;
 using WS.Domain.PreHeat;
 
 namespace WS.DAL.Impl
@@ -38,7 +38,7 @@ namespace WS.DAL.Impl
             param.Add(new SqlParameter { ParameterName = "@SalesQty", Value = SalesQty });
             param.Add(new SqlParameter { ParameterName = "@SkuId", Value = SkuId });
 
-            string sql2 = $"update PushMessages set State =2 where  Id = @Id";
+            string sql2 = $"update PushMessages set State =2,UpdateDate=getDate() where  Id = @Id";
             var param2 = new List<SqlParameter>();
             param2.Add(new SqlParameter { ParameterName = "@Id", Value = Id });
 
@@ -69,7 +69,7 @@ namespace WS.DAL.Impl
             param.Add(new SqlParameter { ParameterName = "@SalesQty", Value = SalesQty });
             param.Add(new SqlParameter { ParameterName = "@SkuId", Value = SkuId });
 
-            string sql2 = $"update PushMessages set State =2 where  Id = @Id";
+            string sql2 = $"update PushMessages set State =2,UpdateDate=getDate() where  Id = @Id";
             var param2 = new List<SqlParameter>();
             param2.Add(new SqlParameter { ParameterName = "@Id", Value = Id });
 
